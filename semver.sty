@@ -1,8 +1,5 @@
-\documentclass{article}
-
-\begin{document}
-    Test
-    \makeatletter
+\NeedsTeXFormat{LaTeX2e}[2021/06/01]
+\ProvidesExplPackage{semver}
     \newcommand*{\six@digits}[1]{%
         \ifnum#1<100000 0\fi
         \ifnum#1<10000 0\fi
@@ -10,12 +7,6 @@
         \ifnum#1<100 0\fi
         \two@digits{#1}%
     }%
-    
-    
-    
-    \ExplSyntaxOn
-    \def\testa{v1.0.1-alpha.1.2.3-123+12234-5}
-    \def\testb{v1.0.1}
     
     \tl_new:N \g_version_tl
     \tl_new:N \g_major_tl
@@ -33,8 +24,6 @@
     \bool_new:N \g_nobuild_bool
     
     \tl_new:N \l_tempb_tl
-    
-
     
     \cs_new:Npn \semver_parse:n #1 {
         \tl_set:Nn \g_version_tl {#1}
@@ -79,8 +68,3 @@
         \tl_set:Nn \l_tempb_tl {\semver_pad_version:n {#1}}
         \l_tempa_tl=\l_tempb_tl
     }
-    
-    \semver_add_sort_key:n {\testb}
-    \ExplSyntaxOff
-    \makeatother
-\end{document}
