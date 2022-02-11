@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[2021/06/01]
-\ProvidesExplPackage{semver}{}{}{}
+\ProvidesPackage{semver}
     
     
     \newcommand{\six@digits}[1]{%
@@ -9,7 +9,7 @@
         \ifnum#1<100 0\fi
         \two@digits{#1}%
     }%
-    
+    \ExplSyntaxOn
     \tl_new:N \g_version_tl
     \tl_new:N \g_major_tl
     \tl_new:N \g_minor_tl
@@ -70,3 +70,4 @@
         \tl_set:Nn \l_tempb_tl {\semver_pad_version:n {#1}}
         \l_tempa_tl=\l_tempb_tl
     }
+\ExplSyntaxOff
