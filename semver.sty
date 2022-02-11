@@ -70,5 +70,8 @@
         \tl_set:Nn \l_tempb_tl {\semver_pad_version:n {#1}}
         \l_tempa_tl=\l_tempb_tl
     }
-    \NewDocumentCommand{\addsortkey}{m}{\semver_add_sort_key:n {#1}}
+    \NewDocumentCommand{\addsortkey}{m}{
+        \tl_set:Nn \g_tempa_tl {#1}
+        
+        \semver_add_sort_key:n {#1}}
 \ExplSyntaxOff
